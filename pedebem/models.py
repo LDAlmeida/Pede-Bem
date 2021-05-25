@@ -1,7 +1,7 @@
-from djongo import models
+from django.db import models
+from django.contrib.postgres.fields import ArrayField
 
 class Item(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
     nome = models.TextField(max_length=30)
     descricao = models.TextField(max_length=256)
     valor = models.FloatField()
@@ -17,7 +17,6 @@ USER_CHOICES = {
 }
 
 class Usuario(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
     nome = models.TextField(max_length=30)
     cpf = models.TextField(max_length=11)
     role = models.CharField(max_length=30, choices = USER_CHOICES)
@@ -27,13 +26,18 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nome
 
-class Comanda(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
+PEDIDOS_CHOICES ={
+    ("1", "Aguardando"),
+    ("2", "Preparando"),
+    ("3", "Pronto"),
+    ("4", "Entregue")
+}
+class Pedidos(models.Model):
     mesa = models.IntegerField()
-    items = models.ArrayField(model_container = Item,)
-    atendente = models.EmbeddedField(model_container = Usuario)
-    ativa = models.BooleanField()
+    item = models.ManyToManyField(Item)
+    atendente = models.ManyToManyField(Usuario)
+    status = models.CharField(max_length=30, choices=PEDIDOS_CHOICES)
 
     def __str__(self):
-        return self.mesa
+        return str(self.mesa) + " - " + str(self.item.all()) + " - " + str(self.status)
         

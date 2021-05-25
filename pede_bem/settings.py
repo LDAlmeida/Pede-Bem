@@ -74,18 +74,16 @@ WSGI_APPLICATION = 'pede_bem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {   
+DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'pedebem',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': "mongodb+srv://admin:admin@cluster0.tauho.mongodb.net/pedebem?retryWrites=true&w=majority"
-        },   
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pedebem', 
+        'USER': 'postgres', 
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
-    
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -1,4 +1,9 @@
 {
     "python.pythonPath": "d:\\Users\\lucas\\Projetos\\Pede Bem\\env\\Scripts\\python.exe",
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "git.ignoreLimitWarning": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django",
+        "--django-settings-module=pedebem.settings",
+    ],
 }
