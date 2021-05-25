@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "d:\\Users\\lucas\\Projetos\\Pede Bem\\env\\Scripts\\python.exe"
+    "python.pythonPath": "d:\\Users\\lucas\\Projetos\\Pede Bem\\env\\Scripts\\python.exe",
+    "python.linting.enabled": true
 }
