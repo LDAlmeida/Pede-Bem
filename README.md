@@ -17,9 +17,9 @@ Pede Bem é um aplicativo de comandas feito para ser leve e rápido.
 
 O aplicativo utiliza:
 
-- [Python] - HTML enhanced for web apps!
-- [Django] - awesome web-based text editor
-- [PostgreSQL] - Markdown parser done right. Fast and easy to extend.
+- [Python] - Coding languague.
+- [Django] - Backend framework.
+- [PostgreSQL] - Relational database.
 
 
 ## Instalação
