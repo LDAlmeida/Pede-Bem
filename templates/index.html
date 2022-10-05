@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap-4.3.1-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.1.1-web/css/all.min.css' %}">
+    <script src="{% static 'bootstrap-4.3.1-dist/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Pede Bem</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/bar/comandaitens/add/">Adicionar pedido</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/bar/comanda/add/">Criar comanda</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav lr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/admin/bar/">Admin <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Bem vindo ao Pede Bem! <i class="fas fa-glass-martini-alt"></i></h1>
+            <p class="lead">Abaixo voce pode acessar as comandas ativas no bar.</p>
+            <hr class="my-4">
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="{% url 'comandas' %}">Comandas ativas</a>
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% if comanda_list %}
+<div class="row">
+    {% for comanda in comanda_list %}
+    <div class="col-sm-6">
+        <div class="card">
+            {%if comanda.status == "Aberta"%}
+            <div class="card-body text-white bg-primary">
+                {% else %}
+                <div class="card-body text-white bg-secondary">
+                    {% endif %}
+                    <h5 class="card-title">{{comanda}}</h5>
+                    <p class="card-text">({{comanda.status}})</p>
+                    <a class="btn btn-primary btn-md" href="{{ comanda.get_absolute_url}}{{comanda.pk}}"
+                        role="button">Detalhes</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>Nao ha comandas abertas.</p>
+        {% endif %}
+        {% endblock %}
