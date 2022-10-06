@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from bar.views import ComandaDetailView, ComandaPagarView, index, ComandaListView
 from bar import views
+from rest_framework import routers
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register('comandadetails', views.ComandaView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +28,5 @@ urlpatterns = [
     path('comandas/', ComandaListView.as_view(), name='comandas'),
     path('comandas/<int:pk>', ComandaDetailView.as_view(), name='comandas_detail'),
     path('comandas/<int:pk>/fechar', ComandaPagarView.as_view(), name='comandas_fechar'),
+    path('rest/', include(router.urls)),
 ]
