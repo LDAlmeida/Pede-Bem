@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/ubuntu/Documents/2021-02-atividades-UFOP-LucasAlmeida/Projeto/pedebem/venv"
+VIRTUAL_ENV="/home/ubuntu/Documents/Pede-Bem/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

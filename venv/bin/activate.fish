@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/ubuntu/Documents/2021-02-atividades-UFOP-LucasAlmeida/Projeto/pedebem/venv"
+set -gx VIRTUAL_ENV "/home/ubuntu/Documents/Pede-Bem/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

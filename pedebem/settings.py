@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%s^gf^dd5cn%$8ue9%)qii5jw!(f(bp66i0ru-@e2@k8!2+7yv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bar',
     'django_extensions',
     'rest_framework',
+    'mod_wsgi.server'
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'bar/static'
+MEDIA_ROOT = 'bar/media/'
+MEDIA_URL = '/media/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
