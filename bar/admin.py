@@ -14,10 +14,10 @@ class ComandaItensAdmin(admin.ModelAdmin):
         return form
 
     def response_add(self, request, obj, post_url_continue=None):
-        return redirect('/close')
+        return None
 
     def response_change(self, request, obj):
-        return redirect('/close')
+        return None
 
 class ComandaAdmin(admin.ModelAdmin):
     list_display = ("mesa", "status")
@@ -25,10 +25,10 @@ class ComandaAdmin(admin.ModelAdmin):
     readonly_fields = ('status', 'total')
 
     def response_add(self, request, obj, post_url_continue=None):
-        return redirect('/close')
+        return None
 
     def response_change(self, request, obj):
-        return redirect('/close')
+        return None
 
 admin.site.register(Comanda, ComandaAdmin)
 admin.site.register(Item)
