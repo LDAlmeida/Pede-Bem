@@ -40,7 +40,7 @@ def comanda_detail(request, pk):
 
 class Itens(viewsets.ModelViewSet):
     queryset = Item.objects.all()
-    serializer_class = ComandaSerializer
+    serializer_class = ItemSerializer
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def itens_detail(request, pk):
