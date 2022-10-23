@@ -22,7 +22,7 @@ from rest_framework import routers
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('comandas', views.Comandas)
 router.register('itens', views.Itens)
-router.register('comanda_details/<int:pk>', views.comanda_detail)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +31,5 @@ urlpatterns = [
     path('comandas/<int:pk>', ComandaDetailView.as_view(), name='comandas_detail'),
     path('comandas/<int:pk>/fechar', ComandaPagarView.as_view(), name='comandas_fechar'),
     path('rest/', include(router.urls)),
+    path('comanda_det.ails/<int:pk>', views.comanda_detail())
 ]
