@@ -19,23 +19,23 @@ def comanda_detail(request, pk):
     """
     print(pk)
     try:
-        Comanda = Comanda.objects.get(pk=pk)
-    except Comanda.DoesNotExist:
+        comanda = Comanda.objects.get(pk=pk)
+    except comanda.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ComandaSerializer(Comanda)
+        serializer = ComandaSerializer(comanda)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ComandaSerializer(Comanda, data=request.data)
+        serializer = ComandaSerializer(comanda, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        Comanda.delete()
+        comanda.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class Itens(viewsets.ModelViewSet):
@@ -48,23 +48,23 @@ def itens_detail(request, pk):
     Retrieve, update or delete a code Comanda.
     """
     try:
-        Item = Item.objects.get(pk=pk)
-    except Item.DoesNotExist:
+        item = Item.objects.get(pk=pk)
+    except item.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ItemSerializer(Item)
+        serializer = ItemSerializer(item)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ItemSerializer(Item, data=request.data)
+        serializer = ItemSerializer(item, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        Item.delete()
+        item.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 def index(request):

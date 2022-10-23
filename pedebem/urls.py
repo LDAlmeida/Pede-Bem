@@ -31,5 +31,5 @@ urlpatterns = [
     path('comandas/<int:pk>', ComandaDetailView.as_view(), name='comandas_detail'),
     path('comandas/<int:pk>/fechar', ComandaPagarView.as_view(), name='comandas_fechar'),
     path('rest/', include(router.urls)),
-    path('comanda_details/<int:pk>', views.comanda_detail)
+    path('rest/comanda_details/<int:pk>', views.comanda_detail)
 ]
