@@ -100,3 +100,6 @@ class ComandaPagarView(generic.DetailView):
         print("entrou")
         return render(request, 'comanda_paga.html')
         
+
+def CloseView(request):
+    return render(request, "close.html")

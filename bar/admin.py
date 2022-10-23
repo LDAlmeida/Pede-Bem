@@ -25,10 +25,10 @@ class ComandaAdmin(admin.ModelAdmin):
     readonly_fields = ('status', 'total')
 
     def response_add(self, request, obj, post_url_continue=None):
-        return redirect('/comandas')
+        return redirect('/close')
 
     def response_change(self, request, obj):
-        return redirect('/comandas')
+        return redirect('/close')
 
 admin.site.register(Comanda, ComandaAdmin)
 admin.site.register(Item)

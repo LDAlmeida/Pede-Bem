@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from bar.views import ComandaDetailView, ComandaPagarView, index, ComandaListView
+from bar.views import CloseView, ComandaDetailView, ComandaPagarView, index, ComandaListView
 from bar import views
 from rest_framework import routers
 
@@ -31,5 +31,6 @@ urlpatterns = [
     path('comandas/<int:pk>', ComandaDetailView.as_view(), name='comandas_detail'),
     path('comandas/<int:pk>/fechar', ComandaPagarView.as_view(), name='comandas_fechar'),
     path('rest/', include(router.urls)),
-    path('rest/comanda_details/<int:pk>', views.comanda_detail)
+    path('rest/comanda_details/<int:pk>', views.comanda_detail),
+    path('close', CloseView)
 ]
