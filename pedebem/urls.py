@@ -22,7 +22,7 @@ from rest_framework import routers
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('comandas', views.Comandas)
 router.register('itens', views.Itens)
-router.register('comanda_details', views.comanda_detail)
+router.register('comanda_details/<int:pk>', views.comanda_detail)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
