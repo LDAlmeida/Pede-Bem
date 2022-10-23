@@ -14,10 +14,10 @@ class ComandaItensAdmin(admin.ModelAdmin):
         return form
 
     def response_add(self, request, obj, post_url_continue=None):
-        return redirect('/comandas')
+        return redirect('/close')
 
     def response_change(self, request, obj):
-        return redirect('/comandas')
+        return redirect('/close')
 
 class ComandaAdmin(admin.ModelAdmin):
     list_display = ("mesa", "status")
