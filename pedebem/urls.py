@@ -20,7 +20,9 @@ from bar import views
 from rest_framework import routers
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register('comandadetails', views.ComandaView)
+router.register('comandas', views.Comandas)
+router.register('itens', views.Itens)
+router.register('comanda_details', views.comanda_detail)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

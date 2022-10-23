@@ -1,13 +1,70 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-from bar.models import Comanda, ComandaItens
-from .serializers import ComandaSerializer
+from bar.models import Comanda, ComandaItens, Item
+from .serializers import ComandaSerializer, ItemSerializer
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 
 # Create your views here.
-class ComandaView(viewsets.ModelViewSet):
-    queryset = Comanda.objects.all()
+class Comandas(viewsets.ModelViewSet):
+    queryset = Comanda.objects.exclude(status='Paga')
     serializer_class = ComandaSerializer
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def comanda_detail(request, pk):
+    """
+    Retrieve, update or delete a code Comanda.
+    """
+    try:
+        Comanda = Comanda.objects.get(pk=pk)
+    except Comanda.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ComandaSerializer(Comanda)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ComandaSerializer(Comanda, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        Comanda.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class Itens(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ComandaSerializer
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def itens_detail(request, pk):
+    """
+    Retrieve, update or delete a code Comanda.
+    """
+    try:
+        Item = Item.objects.get(pk=pk)
+    except Item.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ItemSerializer(Item)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ItemSerializer(Item, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        Item.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 def index(request):
     return render(request, 'index.html', {})
