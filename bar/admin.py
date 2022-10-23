@@ -13,22 +13,11 @@ class ComandaItensAdmin(admin.ModelAdmin):
         form.base_fields['comanda'].queryset = ComandaItens.comanda.get_queryset().exclude(status='Paga')
         return form
 
-    def response_add(self, request, obj, post_url_continue=None):
-        return None
-
-    def response_change(self, request, obj):
-        return None
-
 class ComandaAdmin(admin.ModelAdmin):
     list_display = ("mesa", "status")
     list_filter = ('status',)
     readonly_fields = ('status', 'total')
 
-    def response_add(self, request, obj, post_url_continue=None):
-        return None
-
-    def response_change(self, request, obj):
-        return None
 
 admin.site.register(Comanda, ComandaAdmin)
 admin.site.register(Item)
