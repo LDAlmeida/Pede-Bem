@@ -17,6 +17,7 @@ def comanda_detail(request, pk):
     """
     Retrieve, update or delete a code Comanda.
     """
+    print(pk)
     try:
         Comanda = Comanda.objects.get(pk=pk)
     except Comanda.DoesNotExist:
