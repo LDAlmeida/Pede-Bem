@@ -1,3 +1,4 @@
+from email.policy import default
 from pyexpat import model
 from django.db import models
 from django.urls import reverse
@@ -36,7 +37,7 @@ class Comanda(models.Model):
     mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     itens = models.ManyToManyField(Item, through='ComandaItens', verbose_name="Itens na comanda")
-    total = models.IntegerField(blank=True, null=True)
+    total = models.IntegerField(null=False, default=0)
     status = models.CharField(choices=STATUS_COMANDA_CHOICES, max_length=20, blank=True, null=True)
 
     def __str__(self) -> str:
